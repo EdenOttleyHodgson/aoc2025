@@ -1,4 +1,4 @@
-use crate::common::{BoundedInt, LeftOrRight, div_rem};
+use crate::common::{LeftOrRight, div_rem};
 
 const INPUT: &'static str = include_str!("../inputs/d1");
 const SMALL_INPUT: &'static str = include_str!("../inputs/d1small");
@@ -40,7 +40,6 @@ pub fn part2() {
     let mut dial_num = 50;
     let mut acc = 0;
     for (direction, amount) in parse_input(INPUT) {
-        println!("dialnum:{dial_num}-direction:{direction:?}-amount:{amount}-acc:{acc}");
         dial_num = match direction {
             LeftOrRight::Left => {
                 let (passes, res) = div_rem(dial_num - amount, 100);
@@ -68,22 +67,5 @@ pub fn part2() {
         };
     }
 
-    println!("{dial_num}/{acc}");
-    // for (direction, amount) in parse_input(SMALL_INPUT) {
-    //     println!("dialnum:{dial_num}-direction:{direction:?}-amount:{amount}");
-    //     dial_num = match direction {
-    //         LeftOrRight::Left => dial_num - amount,
-    //         LeftOrRight::Right => dial_num + amount,
-    //     };
-    //
-    //     while dial_num < 0 {
-    //         dial_num += 100;
-    //         acc += 1;
-    //     }
-    //     while dial_num > 99 {
-    //         dial_num -= 100;
-    //         acc += 1;
-    //     }
-    // }
     println!("Day 1 Part 2: {acc}")
 }
