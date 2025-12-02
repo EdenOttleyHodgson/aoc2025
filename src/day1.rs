@@ -39,7 +39,7 @@ pub fn part1() {
 pub fn part2() {
     let mut dial_num = 50;
     let mut acc = 0;
-    for (direction, amount) in parse_input(INPUT) {
+    for (direction, amount) in parse_input(SMALL_INPUT) {
         dial_num = match direction {
             LeftOrRight::Left => {
                 let (passes, res) = div_rem(dial_num - amount, 100);
